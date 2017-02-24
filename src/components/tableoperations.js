@@ -61,7 +61,8 @@ export default class TableOperations extends React.Component {
                             <TableRow key={index}>
                                 <TableRowColumn style={styles.textCenter}>{row.date}</TableRowColumn>
                                 <TableRowColumn style={styles.textCenter}>{row.category}</TableRowColumn>
-                                <TableRowColumn style={styles.textCenter}>{row.sum < 0 ? row.sum : ''}</TableRowColumn>
+                                <TableRowColumn
+                                    style={styles.textCenter}>{row.sum < 0 ? Math.abs(row.sum) : ''}</TableRowColumn>
                                 <TableRowColumn style={styles.textCenter}>{row.sum > 0 ? row.sum : ''}</TableRowColumn>
                             </TableRow>
                         ))}
@@ -71,7 +72,7 @@ export default class TableOperations extends React.Component {
                             <TableRowColumn style={styles.textCenterMiddle}>Итого</TableRowColumn>
                             <TableRowColumn />
                             <TableRowColumn
-                                style={styles.textCenterMiddle}>{this.sumNumber.reduce(this.outCallback, 0)}</TableRowColumn>
+                                style={styles.textCenterMiddle}>{Math.abs(this.sumNumber.reduce(this.outCallback, 0))}</TableRowColumn>
                             <TableRowColumn
                                 style={styles.textCenterMiddle}>{this.sumNumber.reduce(this.inCallback, 0)}</TableRowColumn>
                         </TableRow>

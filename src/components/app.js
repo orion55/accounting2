@@ -3,6 +3,10 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
 import styles from './app.css';
 import TableOperations from './TableOperations'
+import InputDialog from './InputDialog'
+import injectTapEventPlugin from 'react-tap-event-plugin';
+
+injectTapEventPlugin();
 
 class App extends React.Component {
     constructor(props) {
@@ -33,7 +37,7 @@ class App extends React.Component {
         return (
             <MuiThemeProvider>
                 <div className="container">
-                    <RaisedButton label="Новый доход\расход" primary={true}/>
+                    <InputDialog />
                     <TableOperations listOperations={this.state.listOperations}/>
                 </div>
             </MuiThemeProvider>
