@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import RaisedButton from 'material-ui/RaisedButton';
 import styles from './app.css';
 import TableOperations from './TableOperations'
 import InputDialog from './InputDialog'
@@ -15,16 +14,19 @@ class App extends React.Component {
         this.state = {
             listOperations: [
                 {
+                    id: 1,
                     date: '24.02.2017',
                     category: 'Зарплата',
                     sum: 100
                 },
                 {
+                    id: 2,
                     date: '24.02.2017',
                     category: 'Развлечения',
                     sum: -200
                 },
                 {
+                    id: 3,
                     date: '24.02.2017',
                     category: 'Халтура',
                     sum: 500

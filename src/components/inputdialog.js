@@ -8,6 +8,8 @@ import TextField from 'material-ui/TextField';
 export default class InputDialog extends React.Component {
     state = {
         open: false,
+        valueTarget: '',
+        valueSum: '',
     };
 
     handleOpen = () => {
@@ -16,6 +18,18 @@ export default class InputDialog extends React.Component {
 
     handleClose = () => {
         this.setState({open: false});
+    };
+
+    handleChangeSum = (event) => {
+        this.setState({
+            valueSum: event.target.valueSum,
+        });
+    };
+
+    handleChangeTarget = (event) => {
+        this.setState({
+            valueTarget: event.target.valueTarget,
+        });
     };
 
     render() {
@@ -30,8 +44,11 @@ export default class InputDialog extends React.Component {
                 <Dialog actions={actions} modal={false} open={this.state.open} onRequestClose={this.handleClose}
                         title="Новая запись">
                     <DatePicker hintText="Date Picker"/>
-                    <TextField hintText="Назначение дохода\расхода" floatingLabelText="Назначение"/><br/>
-                    <TextField floatingLabelText="Сумма"/>
+                    <TextField floatingLabelText="Назначение дохода\расхода"
+                               fullWidth={true} value={this.state.valueTarget} onChange={this.handleChangeTarget}
+                               floatingLabelFixed={true}/>
+                    <TextField floatingLabelText="Сумма" value={this.state.valueSum} onChange={this.handleChangeSum}
+                               floatingLabelFixed={true}/>
                 </Dialog>
             </div>
         );

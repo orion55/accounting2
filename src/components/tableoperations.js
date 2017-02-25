@@ -15,7 +15,9 @@ const styles = {
     },
     textCenterUppercase: {
         textAlign: 'center',
-        textTransform: 'uppercase'
+        textTransform: 'uppercase',
+        fontWeight: 700,
+        color: ' #000'
     },
     textCenterMiddle: {
         textAlign: 'center',
@@ -50,10 +52,10 @@ export default class TableOperations extends React.Component {
                                 операций</TableHeaderColumn>
                         </TableRow>
                         <TableRow>
-                            <TableHeaderColumn style={styles.textCenter}>Дата</TableHeaderColumn>
-                            <TableHeaderColumn style={styles.textCenter}>Категория</TableHeaderColumn>
-                            <TableHeaderColumn style={styles.textCenter}>Расход</TableHeaderColumn>
-                            <TableHeaderColumn style={styles.textCenter}>Приход</TableHeaderColumn>
+                            <TableHeaderColumn style={styles.textCenterUppercase}>Дата</TableHeaderColumn>
+                            <TableHeaderColumn style={styles.textCenterUppercase}>Категория</TableHeaderColumn>
+                            <TableHeaderColumn style={styles.textCenterUppercase}>Расход</TableHeaderColumn>
+                            <TableHeaderColumn style={styles.textCenterUppercase}>Приход</TableHeaderColumn>
                         </TableRow>
                     </TableHeader>
                     <TableBody displayRowCheckbox={false} showRowHover={true}>
