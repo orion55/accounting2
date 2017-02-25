@@ -35,11 +35,15 @@ class App extends React.Component {
         };
     }
 
+    resultFunc = (data) => {
+        return console.log(data);
+    };
+
     render() {
         return (
             <MuiThemeProvider>
                 <div className="container">
-                    <InputDialog />
+                    <InputDialog onResult={this.resultFunc.bind(this)}/>
                     <TableOperations listOperations={this.state.listOperations}/>
                 </div>
             </MuiThemeProvider>
