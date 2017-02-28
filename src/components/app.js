@@ -36,7 +36,8 @@ class App extends React.Component {
     }
 
     resultFunc = (data) => {
-        return console.log(data);
+        data["id"] = this.state.listOperations.map(row => row.id).reduce((a, b) => Math.max(a, b)) + 1;
+        this.setState({listOperations: this.state.listOperations.concat(data)});
     };
 
     render() {

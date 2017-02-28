@@ -27,8 +27,9 @@ const styles = {
 };
 
 export default class TableOperations extends React.Component {
-
-    sumNumber = this.props.listOperations.map(row => row.sum);
+    constructor(props) {
+        super(props);
+    }
 
     outCallback = (pre, cur) => {
         let num = cur < 0 ? cur : 0;
@@ -74,14 +75,14 @@ export default class TableOperations extends React.Component {
                             <TableRowColumn style={styles.textCenterMiddle}>Итого</TableRowColumn>
                             <TableRowColumn />
                             <TableRowColumn
-                                style={styles.textCenterMiddle}>{Math.abs(this.sumNumber.reduce(this.outCallback, 0))}</TableRowColumn>
+                                style={styles.textCenterMiddle}>{Math.abs(this.props.listOperations.map(row => row.sum).reduce(this.outCallback, 0))}</TableRowColumn>
                             <TableRowColumn
-                                style={styles.textCenterMiddle}>{this.sumNumber.reduce(this.inCallback, 0)}</TableRowColumn>
+                                style={styles.textCenterMiddle}>{this.props.listOperations.map(row => row.sum).reduce(this.inCallback, 0)}</TableRowColumn>
                         </TableRow>
                         <TableRow>
                             <TableRowColumn style={styles.textCenterMiddle}>Остаток</TableRowColumn>
                             <TableRowColumn
-                                style={styles.textCenterMiddle}>{this.sumNumber.reduce(this.sumCallback, 0)}</TableRowColumn>
+                                style={styles.textCenterMiddle}>{this.props.listOperations.map(row => row.sum).reduce(this.sumCallback, 0)}</TableRowColumn>
                             <TableRowColumn />
                             <TableRowColumn />
                         </TableRow>

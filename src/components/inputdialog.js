@@ -21,6 +21,19 @@ if (areIntlLocalesSupported(['ru'])) {
 const curDate = new Date();
 curDate.setHours(0, 0, 0, 0);
 
+let formatDate = (date) => {
+
+    let dd = date.getDate();
+    if (dd < 10) dd = '0' + dd;
+
+    let mm = date.getMonth() + 1;
+    if (mm < 10) mm = '0' + mm;
+
+    let yy = date.getFullYear();
+
+    return dd + '.' + mm + '.' + yy;
+};
+
 export default class InputDialog extends React.Component {
     constructor(props) {
         super(props);
@@ -32,7 +45,7 @@ export default class InputDialog extends React.Component {
             errorTextTarget: '',
             valueSum: 0,
             errorTextSum: ''
-        }
+        };
     };
 
     handleOpen = () => {
@@ -70,7 +83,7 @@ export default class InputDialog extends React.Component {
             this.setState({open: false});
             this.props.onResult(
                 {
-                    date: this.state.valueDate,
+                    date: formatDate(this.state.valueDate),
                     category: this.state.valueTarget,
                     sum: (this.state.valueType === 2 ? this.state.valueSum * -1 : this.state.valueSum)
                 })
