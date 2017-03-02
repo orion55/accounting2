@@ -13,6 +13,8 @@ import MenuItem from 'material-ui/MenuItem';
 import IconButton from 'material-ui/IconButton';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import styles1 from './tableoperations.css';
+import Delete from 'material-ui/svg-icons/action/delete';
+import Edit from 'material-ui/svg-icons/image/edit';
 
 const styles = {
     textCenter: {
@@ -77,8 +79,9 @@ export default class TableOperations extends React.Component {
                                         <IconMenu iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}
                                                   anchorOrigin={{horizontal: 'right', vertical: 'top'}}
                                                   targetOrigin={{horizontal: 'right', vertical: 'top'}}>
-                                            <MenuItem primaryText="Редактировать"/>
-                                            <MenuItem primaryText="Удалить"/>
+                                            <MenuItem primaryText="Редактировать" rightIcon={<Edit />}/>
+                                            <MenuItem primaryText="Удалить" rightIcon={<Delete />}
+                                                      onTouchTap={() => this.props.deleteItem(row.id)}/>
                                         </IconMenu>
                                     </div>
                                 </TableRowColumn>

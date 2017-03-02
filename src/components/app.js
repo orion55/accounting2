@@ -40,12 +40,21 @@ class App extends React.Component {
         this.setState({listOperations: this.state.listOperations.concat(data)});
     };
 
+    deleteItem = (id) => {
+        console.log('Delete ' + id);
+    };
+
+    editItem = (id) => {
+        console.log('Edit ' + id);
+    };
+
     render() {
         return (
             <MuiThemeProvider>
                 <div className="container">
                     <InputDialog onResult={this.resultFunc.bind(this)}/>
-                    <TableOperations listOperations={this.state.listOperations}/>
+                    <TableOperations listOperations={this.state.listOperations}
+                                     deleteItem={this.deleteItem.bind(this)}/>
                 </div>
             </MuiThemeProvider>
         );
