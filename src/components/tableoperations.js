@@ -8,6 +8,11 @@ import {
     TableRow,
     TableRowColumn
 } from 'material-ui/Table';
+import IconMenu from 'material-ui/IconMenu';
+import MenuItem from 'material-ui/MenuItem';
+import IconButton from 'material-ui/IconButton';
+import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
+import styles1 from './tableoperations.css';
 
 const styles = {
     textCenter: {
@@ -65,8 +70,18 @@ export default class TableOperations extends React.Component {
                                 <TableRowColumn style={styles.textCenter}>{row.date}</TableRowColumn>
                                 <TableRowColumn style={styles.textCenter}>{row.category}</TableRowColumn>
                                 <TableRowColumn
-                                    style={styles.textCenter}>{row.sum < 0 ? Math.abs(row.sum) : ''}</TableRowColumn>
-                                <TableRowColumn style={styles.textCenter}>{row.sum > 0 ? row.sum : ''}</TableRowColumn>
+                                    style={styles.textCenter}>{row.sum < 0 ? Math.abs(row.sum) : ' '}</TableRowColumn>
+                                <TableRowColumn style={styles.textCenter}>
+                                    <div className="cellTable">{row.sum > 0 ? row.sum : ' '}</div>
+                                    <div className="cellMenu">
+                                        <IconMenu iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}
+                                                  anchorOrigin={{horizontal: 'right', vertical: 'top'}}
+                                                  targetOrigin={{horizontal: 'right', vertical: 'top'}}>
+                                            <MenuItem primaryText="Редактировать"/>
+                                            <MenuItem primaryText="Удалить"/>
+                                        </IconMenu>
+                                    </div>
+                                </TableRowColumn>
                             </TableRow>
                         ))}
                     </TableBody>
