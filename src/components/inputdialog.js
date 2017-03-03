@@ -60,6 +60,20 @@ export default class InputDialog extends React.Component {
         });
     };
 
+    handleEdit = (item) => {
+        let curItem = item[0];
+        let itemsDate = curItem.date.split('.');
+        this.setState({
+            open: true,
+            valueDate: new Date(itemsDate[2], itemsDate[1] - 1, itemsDate[0]),
+            valueType: curItem.sum > 0 ? 1 : 2,
+            valueTarget: curItem.category,
+            errorTextTarget: '',
+            valueSum: Math.abs(curItem.sum),
+            errorTextSum: ''
+        });
+    };
+
     handleClose = () => {
         this.setState({open: false});
     };

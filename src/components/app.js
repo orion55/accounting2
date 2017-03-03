@@ -47,17 +47,18 @@ class App extends React.Component {
     };
 
     editItem = (id) => {
-        console.log('Edit ' + id);
-
+        this.refs.dialog.handleEdit(this.state.listOperations.filter(item => item.id === id));
     };
 
     render() {
         return (
             <MuiThemeProvider>
                 <div className="container">
-                    <InputDialog onResult={this.resultFunc.bind(this)}/>
+                    <InputDialog onResult={this.resultFunc.bind(this)} ref="dialog"/>
                     <TableOperations listOperations={this.state.listOperations}
-                                     deleteItem={this.deleteItem.bind(this)}/>
+                                     deleteItem={this.deleteItem.bind(this)}
+                                     editItem={this.editItem.bind(this)}
+                    />
                 </div>
             </MuiThemeProvider>
         );

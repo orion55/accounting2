@@ -79,7 +79,8 @@ export default class TableOperations extends React.Component {
                                         <IconMenu iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}
                                                   anchorOrigin={{horizontal: 'right', vertical: 'top'}}
                                                   targetOrigin={{horizontal: 'right', vertical: 'top'}}>
-                                            <MenuItem primaryText="Редактировать" rightIcon={<Edit />}/>
+                                            <MenuItem primaryText="Редактировать" rightIcon={<Edit />}
+                                                      onTouchTap={() => this.props.editItem(row.id)}/>
                                             <MenuItem primaryText="Удалить" rightIcon={<Delete />}
                                                       onTouchTap={() => this.props.deleteItem(row.id)}/>
                                         </IconMenu>
