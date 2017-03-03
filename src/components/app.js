@@ -36,16 +36,19 @@ class App extends React.Component {
     }
 
     resultFunc = (data) => {
-        data["id"] = this.state.listOperations.map(row => row.id).reduce((a, b) => Math.max(a, b)) + 1;
+        Object.keys(this.state.listOperations).length !== 0 ? data["id"] = this.state.listOperations.map(row => row.id).reduce((a, b) => Math.max(a, b)) + 1 : data["id"] = 1;
         this.setState({listOperations: this.state.listOperations.concat(data)});
     };
 
     deleteItem = (id) => {
-        console.log('Delete ' + id);
+        this.setState({
+            listOperations: this.state.listOperations.filter(item => item.id !== id)
+        });
     };
 
     editItem = (id) => {
         console.log('Edit ' + id);
+
     };
 
     render() {
