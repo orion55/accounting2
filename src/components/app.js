@@ -36,8 +36,19 @@ class App extends React.Component {
     }
 
     resultFunc = (data) => {
-        Object.keys(this.state.listOperations).length !== 0 ? data["id"] = this.state.listOperations.map(row => row.id).reduce((a, b) => Math.max(a, b)) + 1 : data["id"] = 1;
-        this.setState({listOperations: this.state.listOperations.concat(data)});
+        let arrResult = this.state.listOperations.filter(item => item.id === data.id);
+        if (arrResult.length === 0) {
+            this.setState({listOperations: this.state.listOperations.concat(data)});
+        } else {
+            this.setState({
+                listOperations: this.state.listOperations.map(item => {
+                    if (item.id === data.id) {
+                        item = data;
+                    }
+                    return item;
+                })
+            });
+        }
     };
 
     deleteItem = (id) => {
@@ -54,7 +65,8 @@ class App extends React.Component {
         return (
             <MuiThemeProvider>
                 <div className="container">
-                    <InputDialog onResult={this.resultFunc.bind(this)} ref="dialog"/>
+                    <InputDialog onResult={this.resultFunc.bind(this)} listOperations={this.state.listOperations}
+                                 ref="dialog"/>
                     <TableOperations listOperations={this.state.listOperations}
                                      deleteItem={this.deleteItem.bind(this)}
                                      editItem={this.editItem.bind(this)}

@@ -10,7 +10,8 @@ module.exports = {
     },
     plugins: [
         new CopyWebpackPlugin([
-            {from: './src/index.html', to: '../index.html'}
+            {from: './src/index.html', to: '../index.html'},
+            {from: './src/img/favicon.ico', to: '../img'}
         ])
     ],
     module: {

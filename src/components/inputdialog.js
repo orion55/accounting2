@@ -44,9 +44,12 @@ export default class InputDialog extends React.Component {
             valueTarget: '',
             errorTextTarget: '',
             valueSum: 0,
-            errorTextSum: ''
+            errorTextSum: '',
+            id: 0
         };
     };
+
+    getID = () => Object.keys(this.props.listOperations).length !== 0 ? this.props.listOperations.map(row => row.id).reduce((a, b) => Math.max(a, b)) + 1 : 1;
 
     handleOpen = () => {
         this.setState({
@@ -56,7 +59,8 @@ export default class InputDialog extends React.Component {
             valueTarget: '',
             errorTextTarget: '',
             valueSum: 0,
-            errorTextSum: ''
+            errorTextSum: '',
+            id: this.getID()
         });
     };
 
@@ -70,7 +74,8 @@ export default class InputDialog extends React.Component {
             valueTarget: curItem.category,
             errorTextTarget: '',
             valueSum: Math.abs(curItem.sum),
-            errorTextSum: ''
+            errorTextSum: '',
+            id: curItem.id
         });
     };
 
@@ -99,7 +104,8 @@ export default class InputDialog extends React.Component {
                 {
                     date: formatDate(this.state.valueDate),
                     category: this.state.valueTarget,
-                    sum: (this.state.valueType === 2 ? this.state.valueSum * -1 : this.state.valueSum)
+                    sum: (this.state.valueType === 2 ? this.state.valueSum * -1 : this.state.valueSum),
+                    id: this.state.id
                 })
         }
     };
