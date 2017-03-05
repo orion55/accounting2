@@ -12,7 +12,26 @@ module.exports = {
         new CopyWebpackPlugin([
             {from: './src/index.html', to: '../index.html'},
             {from: './src/img/favicon.ico', to: '../img'}
-        ])
+        ]),
+        new webpack.DefinePlugin({
+            'process.env': {
+                'NODE_ENV': JSON.stringify('production')
+            }
+        }),
+        new webpack.optimize.UglifyJsPlugin({
+            mangle: true,
+            compress: {
+                warnings: false,
+                sequences: true,
+                dead_code: true,
+                conditionals: true,
+                booleans: true,
+                unused: true,
+                if_return: true,
+                join_vars: true,
+                drop_console: true
+            }
+        })
     ],
     module: {
         loaders: [
